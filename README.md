@@ -139,17 +139,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 For questions or feedback, feel free to reach out:
-- Email: your-email@example.com
-- GitHub: [your-username](https://github.com/your-username)
+- Email: geodominic.pineda@gmail.com
+- GitHub: [imgeothegreat](https://github.com/imgeothegreat)
 
 ---
 
-### Instructions for Use
-1. Copy the entire text above (from `# PSE-Index-Forecasting-with-Lasso-Regression` to the end).
-2. Create a new file named `README.md` in your repository.
-3. Paste the copied text into the `README.md` file.
-4. Save the file.
-
-The Markdown tags (e.g., `#`, `##`, `-`, `**`, ```) are already included, so the content will render correctly on GitHub or any Markdown viewer. The formatting is consistent, with proper headings, lists, code blocks, and links, addressing the issue of the previous improper format.
-
-Let me know if you need any further adjustments!
