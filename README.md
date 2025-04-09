@@ -1,162 +1,155 @@
-Below is a well-structured README.md file for your repository, based on the provided Jupyter notebook and the context of your project. The repository focuses on predicting the Philippine Stock Exchange (PSE) index using Lasso regression, with additional models like Ridge regression and XGBoost, and includes advanced feature engineering for time-series data. I’ve incorporated the title you selected earlier ("PSE-Index-Forecasting-with-Lasso-Regression") and tailored the content to be professional, informative, and user-friendly.
+# PSE-Index-Forecasting-with-Lasso-Regression
 
-PSE-Index-Forecasting-with-Lasso-Regression
-Overview
-This repository contains a machine learning project to forecast the Philippine Stock Exchange (PSE) index using Lasso regression. The project leverages time-series data, advanced feature engineering, and multiple regression models to predict the PSE index's Last Price. The dataset spans from July 2024 to April 2025 and includes external economic indicators such as PHP-to-USD exchange rates, inflation rates, and interest rates.
+## Overview
+This repository contains a machine learning project to forecast the Philippine Stock Exchange (PSE) index using Lasso regression. The project leverages time-series data, advanced feature engineering, and multiple regression models to predict the PSE index's `Last Price`. The dataset spans from July 2024 to April 2025 and includes external economic indicators such as PHP-to-USD exchange rates, inflation rates, and interest rates.
 
 The primary model, Lasso regression, achieves high accuracy with an RMSE of 2.736 and an R² of 0.999 on the test set. Additional models like Ridge regression and XGBoost are also implemented for comparison.
 
-Features
-Data Sources:
-PSEI historical data (psei_historical.csv)
-PHP-to-USD exchange rates (php_to_usd.csv)
-S&P 500 index data (sp500_index.csv)
-Inflation rates in the Philippines (inflation_philippines.csv)
-Bank interest rates (bank_interest_rate.csv)
-Feature Engineering:
-Lagged features for PSEI Last Price (e.g., Last_Price_PSEI_Lag1, Last_Price_PSEI_Lag2)
-Log transformations for volume, trade, share, and net foreign values to handle skewed distributions
-Interaction term: Change_x_Per_Inflation (PSEI change multiplied by inflation rate)
-Models:
-Lasso Regression: Primary model with excellent performance (RMSE: 2.736, R²: 0.999)
-Ridge Regression: For comparison (RMSE: 10.561, R²: 0.986)
-XGBoost: Additional model for benchmarking
-Evaluation:
-Models are evaluated using RMSE and R² on a test set (20% of the data).
-Visualizations include actual vs. predicted scatter plots for each model.
-Dataset
-The dataset is a merged collection of daily and monthly data:
+## Features
+- **Data Sources**:
+  - PSEI historical data (`psei_historical.csv`)
+  - PHP-to-USD exchange rates (`php_to_usd.csv`)
+  - S&P 500 index data (`sp500_index.csv`)
+  - Inflation rates in the Philippines (`inflation_philippines.csv`)
+  - Bank interest rates (`bank_interest_rate.csv`)
+- **Feature Engineering**:
+  - Lagged features for PSEI `Last Price` (e.g., `Last_Price_PSEI_Lag1`, `Last_Price_PSEI_Lag2`)
+  - Log transformations for volume, trade, share, and net foreign values to handle skewed distributions
+  - Interaction term: `Change_x_Per_Inflation` (PSEI change multiplied by inflation rate)
+- **Models**:
+  - **Lasso Regression**: Primary model with excellent performance (RMSE: 2.736, R²: 0.999)
+  - **Ridge Regression**: For comparison (RMSE: 10.561, R²: 0.986)
+  - **XGBoost**: Additional model for benchmarking
+- **Evaluation**:
+  - Models are evaluated using RMSE and R² on a test set (20% of the data).
+  - Visualizations include actual vs. predicted scatter plots for each model.
 
-Time Range: July 13, 2024, to April 4, 2025
-Key Columns:
-Last Price_PSEI: Target variable (PSE index closing price)
-Last Price_PHP_USD: PHP-to-USD exchange rate
-Inflation_Rate: Monthly inflation rate in the Philippines
-Interest_Rate: Monthly bank interest rate
-Log_Volume, Log_Trade, Log_Share, Log_Net_Foreign: Transformed features for volume, trade, share, and net foreign activity
-Preprocessing:
-Data cleaning: Handling suffixes (e.g., 'M', 'B', 'K') in volume and net foreign columns, converting percentages, and removing commas in prices.
-Merging: Daily PSEI and PHP-to-USD data are merged with monthly inflation and interest rate data using forward and backward filling.
-Feature engineering: Lagged features, log transformations, and interaction terms are created to capture temporal and economic relationships.
-Installation
+## Dataset
+The dataset is a merged collection of daily and monthly data:
+- **Time Range**: July 13, 2024, to April 4, 2025
+- **Key Columns**:
+  - `Last Price_PSEI`: Target variable (PSE index closing price)
+  - `Last Price_PHP_USD`: PHP-to-USD exchange rate
+  - `Inflation_Rate`: Monthly inflation rate in the Philippines
+  - `Interest_Rate`: Monthly bank interest rate
+  - `Log_Volume`, `Log_Trade`, `Log_Share`, `Log_Net_Foreign`: Transformed features for volume, trade, share, and net foreign activity
+- **Preprocessing**:
+  - Data cleaning: Handling suffixes (e.g., 'M', 'B', 'K') in volume and net foreign columns, converting percentages, and removing commas in prices.
+  - Merging: Daily PSEI and PHP-to-USD data are merged with monthly inflation and interest rate data using forward and backward filling.
+  - Feature engineering: Lagged features, log transformations, and interaction terms are created to capture temporal and economic relationships.
+
+## Installation
 To run this project, you’ll need Python 3.12.5 and the following dependencies. It’s recommended to use a virtual environment.
 
-Clone the Repository:
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/PSE-Index-Forecasting-with-Lasso-Regression.git
+   cd PSE-Index-Forecasting-with-Lasso-Regression
+   ```
 
-bash
+2. **Set Up a Virtual Environment** (optional but recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-Collapse
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Wrap
+   The `requirements.txt` file should include:
+   ```
+   pandas
+   numpy
+   scikit-learn
+   torch
+   matplotlib
+   xgboost
+   ```
 
-Copy
-git clone https://github.com/your-username/PSE-Index-Forecasting-with-Lasso-Regression.git
-cd PSE-Index-Forecasting-with-Lasso-Regression
-Set Up a Virtual Environment (optional but recommended):
+4. **Download the Dataset**:
+   - Place the following CSV files in the project directory:
+     - `psei_historical.csv`
+     - `php_to_usd.csv`
+     - `sp500_index.csv`
+     - `inflation_philippines.csv`
+     - `bank_interest_rate.csv`
+   - Alternatively, the merged dataset (`merged_data.csv`) is generated by the notebook and can be used directly.
 
-bash
+## Usage
+1. **Open the Jupyter Notebook**:
+   ```bash
+   jupyter notebook PSEI_Forecasting.ipynb
+   ```
 
-Collapse
+2. **Run the Notebook**:
+   - The notebook (`PSEI_Forecasting.ipynb`) contains all the code for data loading, preprocessing, feature engineering, model training, and evaluation.
+   - Run the cells sequentially to reproduce the results.
 
-Wrap
+3. **Key Outputs**:
+   - **Merged Dataset**: Saved as `merged_data.csv` after preprocessing.
+   - **Model Performance**:
+     - Lasso Regression: RMSE: 2.736, R²: 0.999
+     - Ridge Regression: RMSE: 10.561, R²: 0.986
+     - XGBoost: Performance metrics printed after training.
+   - **Visualizations**:
+     - Actual vs. predicted scatter plots for Lasso, Ridge, and XGBoost models.
+     - Example plot for Ridge regression:
+       ![Actual vs Predicted (Ridge)](images/ridge_actual_vs_predicted.png)
 
-Copy
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install Dependencies:
+4. **Predicting Future Data**:
+   - The notebook includes code to simulate future data by holding out the last 10 days of the dataset (7/26/2025 to 8/4/2025) and predicting on it.
+   - You can also manually create future data (e.g., for 8/5/2025 onward) by providing values for the features and running the prediction cells.
 
-bash
+## Results
+- **Lasso Regression**:
+  - RMSE: 2.736
+  - R²: 0.999
+  - The model captures the PSE index trends extremely well, with predictions deviating by only ~2–3 points on average.
+- **Ridge Regression**:
+  - RMSE: 10.561
+  - R²: 0.986
+  - Slightly worse performance than Lasso, with predictions deviating by ~10–15 points.
+- **XGBoost**:
+  - Performance metrics are printed in the notebook. Typically, XGBoost performs well but may not outperform Lasso in this case due to the linear nature of the relationships in the data.
+- **Feature Importance**:
+  - Lasso regression sets some feature coefficients to zero, indicating feature selection (e.g., less important features like `Log_Net_Foreign` may have a coefficient of 0).
 
-Collapse
+## Future Work
+- **Incorporate More Features**:
+  - Add more economic indicators (e.g., GDP growth, unemployment rates) to improve model robustness.
+  - Include sentiment analysis from news or social media to capture market sentiment.
+- **Model Enhancements**:
+  - Experiment with deep learning models (e.g., LSTM) for time-series forecasting.
+  - Use hyperparameter tuning (e.g., GridSearchCV) to optimize Lasso and XGBoost models.
+- **Real-Time Prediction**:
+  - Deploy the model as a web application to provide real-time PSE index predictions based on user-provided economic data.
 
-Wrap
-
-Copy
-pip install -r requirements.txt
-The requirements.txt file should include:
-
-text
-
-Collapse
-
-Wrap
-
-Copy
-pandas
-numpy
-scikit-learn
-torch
-matplotlib
-xgboost
-Download the Dataset:
-
-Place the following CSV files in the project directory:
-psei_historical.csv
-php_to_usd.csv
-sp500_index.csv
-inflation_philippines.csv
-bank_interest_rate.csv
-Alternatively, the merged dataset (merged_data.csv) is generated by the notebook and can be used directly.
-Usage
-Open the Jupyter Notebook:
-bash
-
-Collapse
-
-Wrap
-
-Copy
-jupyter notebook PSEI_Forecasting.ipynb
-Run the Notebook:
-The notebook (PSEI_Forecasting.ipynb) contains all the code for data loading, preprocessing, feature engineering, model training, and evaluation.
-Run the cells sequentially to reproduce the results.
-Key Outputs:
-Merged Dataset: Saved as merged_data.csv after preprocessing.
-Model Performance:
-Lasso Regression: RMSE: 2.736, R²: 0.999
-Ridge Regression: RMSE: 10.561, R²: 0.986
-XGBoost: Performance metrics printed after training.
-Visualizations:
-Actual vs. predicted scatter plots for Lasso, Ridge, and XGBoost models.
-Example plot for Ridge regression:
-Predicting Future Data:
-The notebook includes code to simulate future data by holding out the last 10 days of the dataset (7/26/2025 to 8/4/2025) and predicting on it.
-You can also manually create future data (e.g., for 8/5/2025 onward) by providing values for the features and running the prediction cells.
-Results
-Lasso Regression:
-RMSE: 2.736
-R²: 0.999
-The model captures the PSE index trends extremely well, with predictions deviating by only ~2–3 points on average.
-Ridge Regression:
-RMSE: 10.561
-R²: 0.986
-Slightly worse performance than Lasso, with predictions deviating by ~10–15 points.
-XGBoost:
-Performance metrics are printed in the notebook. Typically, XGBoost performs well but may not outperform Lasso in this case due to the linear nature of the relationships in the data.
-Feature Importance:
-Lasso regression sets some feature coefficients to zero, indicating feature selection (e.g., less important features like Log_Net_Foreign may have a coefficient of 0).
-Future Work
-Incorporate More Features:
-Add more economic indicators (e.g., GDP growth, unemployment rates) to improve model robustness.
-Include sentiment analysis from news or social media to capture market sentiment.
-Model Enhancements:
-Experiment with deep learning models (e.g., LSTM) for time-series forecasting.
-Use hyperparameter tuning (e.g., GridSearchCV) to optimize Lasso and XGBoost models.
-Real-Time Prediction:
-Deploy the model as a web application to provide real-time PSE index predictions based on user-provided economic data.
-Contributing
+## Contributing
 Contributions are welcome! If you’d like to contribute:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Make your changes and commit (`git commit -m "Add your feature"`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a pull request.
 
-Fork the repository.
-Create a new branch (git checkout -b feature/your-feature).
-Make your changes and commit (git commit -m "Add your feature").
-Push to the branch (git push origin feature/your-feature).
-Open a pull request.
-License
-This project is licensed under the MIT License. See the  file for details.
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Contact
+## Contact
 For questions or feedback, feel free to reach out:
+- Email: your-email@example.com
+- GitHub: [your-username](https://github.com/your-username)
 
-Email: your-email@example.com
-GitHub: your-username
+---
+
+### Instructions for Use
+1. Copy the entire text above (from `# PSE-Index-Forecasting-with-Lasso-Regression` to the end).
+2. Create a new file named `README.md` in your repository.
+3. Paste the copied text into the `README.md` file.
+4. Save the file.
+
+The Markdown tags (e.g., `#`, `##`, `-`, `**`, ```) are already included, so the content will render correctly on GitHub or any Markdown viewer. The formatting is consistent, with proper headings, lists, code blocks, and links, addressing the issue of the previous improper format.
+
+Let me know if you need any further adjustments!
